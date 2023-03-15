@@ -16,7 +16,7 @@ const pool = new Pool({
 
 pool.query("select username from users where username='sper'")
   .then((data) => console.log(data.rows[0].username))
-  .catch((err) => console.log('user does not exist'));
+  .catch((err) => { if (err) { console.log('user does not exist'); } });
 
 module.exports = {
   query: (text, params, callback) => {
